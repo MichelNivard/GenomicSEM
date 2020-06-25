@@ -1,5 +1,4 @@
-
-addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="standard"){
+addSNPs <- function(covstruc, SNPs, SNPSE=FALSE, parallel=FALSE, cores=NULL, GC="standard") {
   
   print("Please note that an update was made on 11/21/19 that combine addSNPs and the multivariate GWAS functions into a single step. Therefore, addSNPs is no longer a necessary function.")    
   warning("Please note that an update was made on 11/21/19 that combine addSNPs and the multivariate GWAS functions into a single step. Therefore, addSNPs is no longer a necessary function.")
@@ -52,9 +51,8 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       ##pull the coordinates of the I_LD matrix to loop making the V_SNP matrix
       coords<-which(I_LD != 'NA', arr.ind= T)
       
-      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
-      
       if(GC == "conserv"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -68,6 +66,7 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       
       #single GC correction using sqrt of univariate LDSC intercepts
       if(GC == "standard"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -81,6 +80,7 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       
       #no GC correction
       if(GC == "none"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -200,8 +200,8 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       ##pull the coordinates of the I_LD matrix to loop making the V_SNP matrix
       coords<-which(I_LD != 'NA', arr.ind= T)
       
-      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
       if(GC == "conserv"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -215,6 +215,7 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       
       #single GC correction using sqrt of univariate LDSC intercepts
       if(GC == "standard"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -228,6 +229,7 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
       
       #no GC correction
       if(GC == "none"){
+      #loop to add in the GWAS SEs, correct them for univariate and bivariate intercepts, and multiply by SNP variance from reference panel
         for (p in 1:nrow(coords)) { 
           x<-coords[p,1]
           y<-coords[p,2]
@@ -266,11 +268,12 @@ addSNPs <-function(covstruc, SNPs, SNPSE = FALSE,parallel=FALSE,cores=NULL,GC="s
     }}
   
   ##save the rsnumbers, MAF, A1/A2, and BP
-  SNPs2<-SNPs[,1:6]
+  SNPs<-SNPs[,1:6]
   
   time_all<-proc.time()-time
   print(time_all[3])
   
-  return(Output <- list(V_Full=V_Full_List,S_Full=S_Full_List,RS=SNPs2))
+  return(output <- list(V_Full=V_Full_List,S_Full=S_Full_List,RS=SNPs,n=covstruc$n))
   
 }
+

@@ -5,7 +5,7 @@
 Function to expand the S and V matrices to include SNP effects for multivariate GWAS in GenomicSEM
 }
 \usage{
-addSNPs(covstruc, SNPs,SNPSE=FALSE,parallel=TRUE,cores=NULL,GC="standard", \dots)
+addSNPs(covstruc,SNPs,SNPSE=FALSE,parallel=TRUE,cores=NULL,GC="standard", \dots)
 
 }
 \arguments{
@@ -31,3 +31,4 @@ addSNPs(covstruc, SNPs,SNPSE=FALSE,parallel=TRUE,cores=NULL,GC="standard", \dots
 \examples{
 
 }
+
